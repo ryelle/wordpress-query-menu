@@ -66,7 +66,7 @@ export function requestMenu( location ) {
 		} );
 
 		const url = `${ SiteSettings.endpoint }wp-api-menus/v2/menu-locations/${ location }`;
-		fetch( url, {
+		return fetch( url, {
 			credentials: 'same-origin',
 		} ).then( ( response ) => {
 			return response.json()
