@@ -3,6 +3,10 @@
  * External dependencies
  */
 import { combineReducers } from 'redux';
+import API from 'wordpress-rest-api-oauth-1';
+const api = new API( {
+	url: SiteSettings.endpoint
+} );
 
 /**
  * Menu actions
@@ -65,18 +69,13 @@ export function requestMenu( location ) {
 			location
 		} );
 
-		const url = `${ SiteSettings.endpoint }wp-api-menus/v2/menu-locations/${ location }`;
-		return fetch( url, {
-			credentials: 'same-origin',
-		} ).then( ( response ) => {
-			return response.json()
-		} ).then( ( json ) => {
+		api.get( `/wp-api-menus/v2/menu-locations/${ location }` ).then( menu => {
 			dispatch( {
 				type: MENU_REQUEST_SUCCESS,
 				location,
-				menu: json,
+				menu,
 			} );
-		} ).catch( ( error ) => {
+		} ).catch( error => {
 			dispatch( {
 				type: MENU_REQUEST_FAILURE,
 				location,
