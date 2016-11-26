@@ -1,15 +1,17 @@
 WordPress Query Menu
 ====================
 
-This package contains a query component, along with redux state & selectors for posts pulled from a WordPress site. This uses the [`node-wpapi`](https://github.com/WP-API/node-wpapi) package to get your site's data via Query Components ([inspired by calypso](https://github.com/Automattic/wp-calypso/blob/master/docs/our-approach-to-data.md#query-components)). The Query Components call the API, which via actions set your site's data into the state.
+This package contains a query component, along with redux state & selectors for posts pulled from a WordPress site. This uses the [`wordpress-rest-api-oauth-1`](https://github.com/WP-API/wordpress-rest-api-oauth-1) package to get your site's data via Query Components ([inspired by calypso](https://github.com/Automattic/wp-calypso/blob/master/docs/our-approach-to-data.md#query-components)). The Query Components call the API, which via actions set your site's data into the state.
 
-To use any of these helpers, you'll need to set your Site URL & nonce in a global (`SiteSettings`), so that the API knows what site to connect to. For example:
+To use any of these helpers, you'll need to set your Site URL in a global (`SiteSettings`), so that the API knows what site to connect to. For example:
 
 ```js
 window.SiteSettings = {
-	endpoint: 'url/wp-json',
+	endpoint: 'url.com/path-to-wordpress',
 };
 ```
+
+As of version 1.1, the URL should _not_ include `/wp_json` – `wordpress-rest-api-oauth-1` adds that for us.
 
 QueryMenu
 =========
