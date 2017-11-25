@@ -42,11 +42,11 @@ class QueryMenu extends Component {
 QueryMenu.propTypes = {
 	location: PropTypes.string.isRequired,
 	requestingMenu: PropTypes.bool,
-	requestMenu: PropTypes.func
+	requestMenu: PropTypes.func,
 };
 
 QueryMenu.defaultProps = {
-	requestMenu: () => {}
+	requestMenu: () => {},
 };
 
 export default connect(
@@ -58,7 +58,7 @@ export default connect(
 	},
 	( dispatch ) => {
 		return bindActionCreators( {
-			requestMenu
+			requestMenu,
 		}, dispatch );
 	}
 )( QueryMenu );

@@ -5,7 +5,7 @@
 import { combineReducers } from 'redux';
 import API from 'wordpress-rest-api-oauth-1';
 const api = new API( {
-	url: SiteSettings.endpoint
+	url: SiteSettings.endpoint,
 } );
 
 /**
@@ -53,7 +53,7 @@ export function requests( state = {}, action ) {
 
 export default combineReducers( {
 	items,
-	requests
+	requests,
 } );
 
 /**
@@ -66,7 +66,7 @@ export function requestMenu( location ) {
 	return ( dispatch ) => {
 		dispatch( {
 			type: MENU_REQUEST,
-			location
+			location,
 		} );
 
 		api.get( `/wp-api-menus/v2/menu-locations/${ location }` ).then( menu => {
@@ -79,7 +79,7 @@ export function requestMenu( location ) {
 			dispatch( {
 				type: MENU_REQUEST_FAILURE,
 				location,
-				error
+				error,
 			} );
 		} );
 	};
